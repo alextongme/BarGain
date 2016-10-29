@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Welcome</title>
+  <link rel="stylesheet" href="css/currentLocation.css">
+</head>
+<body>
+  <h1>Your current location has a</h1>
+  <h1>latitude of <%= currentLocation.location.lat %>.</h1>
+  <h1>and a longitude of <%= currentLocation.location.lng %>.</h1>
+  <h1>And we are within <%= currentLocation.accuracy %> meters accurate.</h1>
+  <h1>Your user ID is <%= user._id %></h1>
+
+  <form action="/sell" method="get" accept-charset="utf-8">
+      <!-- <input type='hidden' name='user[latitude]' value='<%= currentLocation.location.lat %>'>
+      <input type='hidden' name='user[longitude]' value='<%= currentLocation.location.lng %>'>
+      <input type='hidden' name='user[accuracy]' value='<%= currentLocation.accuracy %>'> -->
+      <input type="submit" value="Would you like to sell something?">
+    </form>
+
+    <form action="/buy" method="get" accept-charset="utf-8">
+      <input type="submit" value="I wanna buy something!">
+    </form>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>iTunes Search</title>
+  <link rel="stylesheet" href="">
+</head>
+<body>
+  <h1><%= user.username %>, search for your favorite albums!</h1>
+  <form action="/music/search" method="POST">
+    <input type="text" name="searchTerm" placeholder="search for your favorite album">
+    <input type="submit" value="Search">
+  </form>
+  <div id="favorites-container">
+    <h2><%= user.username %>'s Favorites:</h2>
+    <% favorites.forEach((fave) => { %>
+      <div class="fave">
+        <img src="<%= fave.artworkUrl100 %>" alt="">
+        <p><%= fave.artistName %></p>
+        <p><%= fave.collectionName %></p>
+        <form action="/music/favorites/<%= fave._id %>?_method=DELETE" method="post">
+          <input type="submit" value="Delete">
+        </form>
+      </div>
+    <% }) %>
+  </div>
+  <div id="search-results-container">
+    <h2>Search Results:</h2>
+    <% results.forEach((album) => { %>
+      <div class="search-results">
+        <img src="<%= album.artworkUrl100 %>" alt="">
+        <p><%= album.artistName %></p>
+        <p><%= album.collectionName %></p>
+        <form action="/music/favorites" method="POST">
+          <input type="hidden" name="favorite[collectionName]" value="<%= album.collectionName %>">
+          <input type="hidden" name="favorite[artistName]" value="<%= album.artistName %>">
+          <input type="hidden" name="favorite[artworkUrl100]" value="<%= album.artworkUrl100 %>">
+          <input type="submit" value="SAVE">
+        </form>
+      </div>
+    <% }) %>
+  </div>
+  <a href="/users/profile">Home</a>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!-- This entire html template is used from the Google Maps API documentation located at https://developers.google.com/. -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="../../css/map.css">
+    <style>
+       #map {
+        height: 700px;
+        width: 90%;
+        margin: 0 auto;
+       }
+    </style>
+  </head>
+  <body>
+    <h3>My Google Maps Demo</h3>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        <% for (let i=0; i < mapMarkers.length; i++) { %>
+        var uluru<%= i %> = {lat: <%= mapMarkers[i].latitude %> , lng: <%= mapMarkers[i].longitude %>};
+        <% }; %>
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 12,
+          center: {lat: 40.7589, lng: -73.985130},
+        });
+
+        <% for (let i=0; i < mapMarkers.length; i++) { %>
+        var contentString<%= i %> = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '<h1><%= mapMarkers[i].sellerId %></h1>'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
+            '<div id="bodyContent">'+
+            '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is looking to sell a snowboard.</p>'+
+            '</div>'+
+            '</div>';
+        var infowindow<%= i %> = new google.maps.InfoWindow({
+          content: contentString<%= i %>
+        });
+        var marker<%= i %> = new google.maps.Marker({
+          position: uluru<%= i %>,
+          map: map
+        });
+         marker<%= i %>.addListener('click', function() {
+          infowindow<%= i %>.open(map, marker<%= i %>);
+        });
+         <% }; %>
+      }
+    </script>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBUfW5KCtL1Uz7yuOxpcNWPG6kWzr_1_ik&callback=initMap">
+    </script>
+  </body>
+</html>

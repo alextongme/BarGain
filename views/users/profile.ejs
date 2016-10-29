@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>User Profile</title>
+    <link rel="stylesheet" type="text/css" href="../css/profile.css">
+  </head>
+  <body>
+    <!-- Example -->
+
+    <h1>Hello <%= user.username %></h1>
+ <a href="/decide">Click here to enter the world of Barterin'.</a>
+
+    <form action="/auth?_method=DELETE" method="post">
+      <input type="submit" value="Logout">
+    </form>
+
+    <h1> Your Profile <h1>
+
+    Things you are currently selling: <br>
+
+
+    Things you are currently watching: <br>
+
+
+
+  </body>
+</html>

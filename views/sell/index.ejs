@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Welcome</title>
+  <link rel="stylesheet" href="../css/currentLocation.css">
+</head>
+<body>
+
+<h1>Your current location has a</h1>
+  <h1>latitude of <%= currentLocation.location.lat %>.</h1>
+  <h1>and a longitude of <%= currentLocation.location.lng %>.</h1>
+
+    <form action="/sell/submit" method="post" accept-charset="utf-8">
+      <input type='hidden' name='user[latitude]' value='<%= currentLocation.location.lat %>'><br>
+      <input type='hidden' name='user[longitude]' value='<%= currentLocation.location.lng %>'><br>
+      <input type='hidden' name='user[accuracy]' value='<%= currentLocation.accuracy %>'><br>
+      <input type="number" name='user[quantity]' placeholder="Quantity?"><br>
+      <input type="tel" name='user[tel]' placeholder="Telephone?"><br>
+      <input type="email" name='user[email]' placeholder="Email"><br>
+      <input type='text' name='user[description]' placeholder='What are you selling today?'><br>
+      <input type='number' name='user[price]' placeholder='What price are you willing to Bar Gain from?'><br>
+      <p>Have a picture?</p>
+      <input type="file" name="user[pic]" accept="image/*">
+      <input type="submit" value="Submit!">
+    </form>
+
+</body>
+</html>
