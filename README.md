@@ -3,7 +3,7 @@
 My very first full-stack application. Buy and sell items from thousands of users all geolocated around you. Below is a readme.md file with explanations of the technologies used, the approach taken, installation instructions, unsolved problems, etc. 
 
 ## Deployed Link
-(https://www.bar-gain.herokuapp.com "BarGain")
+[BarGain](https://www.bar-gain.herokuapp.com "BarGain")
 
 ### Technologies Used
 "eslint": "^3.8.1"  
@@ -34,10 +34,17 @@ Adjust users' ability to see favorites on their account page.
 Add abilities to upload pictures of items.
 
 ### Wireframes
+#### Title Page
 ![alt text](wireframes/1.png)
+#### Login Page
 ![alt text](wireframes/2.png)
+#### Signup Page
 ![alt text](wireframes/3.png)
+#### Deciding Page
 ![alt text](wireframes/4.png)
+#### All Listings Page w/ Google Map Markers
 ![alt text](wireframes/5.png)
+#### New Listing Page
 ![alt text](wireframes/6.png)
+#### Search Results Page
 ![alt text](wireframes/7.png)
