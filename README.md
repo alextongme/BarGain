@@ -2,6 +2,9 @@
 ## 'The only bar that doesn't sell alcohol.'
 My very first full-stack application. Buy and sell items from thousands of users all geolocated around you. Below is a readme.md file with explanations of the technologies used, the approach taken, installation instructions, unsolved problems, etc. 
 
+## Approach Taken
+Started by learning and experimenting with Google Maps API manipulation. Then, I implemented the users signup/login forms courtesy of [Bobby King](https://github.com/gittheking) at General Assembly. 
+
 ## Deployed Link
 [BarGain](https://www.bar-gain.herokuapp.com "BarGain")
 
@@ -21,7 +24,10 @@ My very first full-stack application. Buy and sell items from thousands of users
 "node-fetch": "^1.6.3"  
 "path": "^0.12.7"
 
-HTML, CSS, Javascript/Jquery, Google Maps API
+HTML  
+CSS  
+Javascript/Jquery  
+Google Maps API  
 
 ### Installation Instructions
 ```bash
