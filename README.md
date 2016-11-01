@@ -27,3 +27,9 @@ A readme.md file with explanations of the technologies used, the approach taken,
 
 ### Wireframes
 ![alt text](wireframes/1.png)
+![alt text](wireframes/2.png)
+![alt text](wireframes/3.png)
+![alt text](wireframes/4.png)
+![alt text](wireframes/5.png)
+![alt text](wireframes/6.png)
+![alt text](wireframes/7.png)
