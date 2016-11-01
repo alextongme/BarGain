@@ -26,4 +26,4 @@ A readme.md file with explanations of the technologies used, the approach taken,
 ### Unsolved Problems/Future Work
 
 ### Wireframes
-![alt tag](http:/./wireframes/1.jpg)
+![alt tag](wireframes/1.jpg)
