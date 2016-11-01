@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="../../css/reset.css">
+  <link rel="stylesheet" type="text/css" href="../../css/navbar.css">
+  <link rel="stylesheet" href="css/decide.css">
+
+</head>
+<body>
+
+<div id='navContainer'>
+  <form id='searchform' action="/buy/search" method="get">
+  <input id='searchbar' type="text" name="searchTerm" placeholder="Search">
+  <input id='searchsubmit' type="submit" value="Search">
+  </form>
+  <ul>
+    <li><a id='logo' href="/decide">BarGain</a></li>
+    <li><a href="/sell">BarSell</a></li>
+    <li><a href="/buy">BarBuy</a></li>
+       <li><a href="/about">About</a></li>
+    <li><a id='account' href="/users/profile">Account</a></li>
+  </ul>
+</div>
+
+  <p><%= listing.username %></p>
+  <p><%= listing.title %></p>
+  <p><%= listing.category %></p>
+  <p><%= listing.price %></p>
+  <p><%= listing.description %></p>
+  <p><%= listing.tel %></p>
+  <p><%= listing.email %></p>
+
+  <h1>Users that are also following this item in the area</h1>
+  <p><%= listing.favoriteUsers.length %> <p>
+  <% listing.favoriteUsers.forEach((user) => { %>
+  <div id='userCon'>
+  <p><%= user %></p>
+  </div>
+  <% }) %>
+
+  <p>Wanna favorite this listing?</p>
+
+<form action="/favorites" method="POST">
+  <input type="hidden" name="listing[_id]" value="<%= listing._id %>">
+  <input type="hidden" name="listing[sellerId]" value="<%= listing.sellerId %>">
+  <input type="hidden" name="listing[username]" value="<%= listing.username %>">
+  <input type="hidden" name="listing[title]" value="<%= listing.title %>">
+  <input type="hidden" name="listing[price]" value="<%= listing.price %>">
+  <input type="hidden" name="listing[description]" value="<%= listing.description %>">
+  <input type="hidden" name="listing[tel]" value="<%= listing.tel %>">
+  <input type="hidden" name="listing[email]" value="<%= listing.email %>">
+  <input type="hidden" name="listing[quantity]" value="<%= listing.quantity %>">
+  <input type="hidden" name="listing[category]" value="<%= listing.category %>">
+  <input type='hidden' name='listing[latitude]' value='<%= listing.latitude %>'><br>
+  <input type='hidden' name='listing[longitude]' value='<%= listing.longitude %>'><br>
+  <input type='hidden' name='listing[accuracy]' value='<%= listing.accuracy %>'><br>
+
+  <input type="submit" value="SAVE">
+</form>
+
+</body>
+</html>

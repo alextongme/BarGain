@@ -4,15 +4,25 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Login</title>
-    <link rel="stylesheet" href="css/login.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../css/navbar.css">
+    <link rel="stylesheet" href="../../css/login.css">
+
   </head>
   <body>
-    <h1>Login</h1>
-     <h1>Would you like to broadcast your location to your General Assembly classmates?</h1>
-    <form class="" action="/auth" method="post">
-        <input type="text" name="user[username]" value="" placeholder="Username">
-        <input type="password" name="user[password]" value="" placeholder="Password">
-        <input type="submit" name="name" value="Log in">
+
+    <div id='loginContainer'>
+    <div id='header'>
+    <h1>Welcome back.<h1>
+    <h2>Ready to start BarGaining?</h2>
+    </div>
+    <form class="login" action="/auth" method="post">
+        <input type="text" name="user[username]" value="" placeholder="User"><br>
+        <input type="password" name="user[password]" value="" placeholder="Password"><br>
+        <input id='submit' type="submit" name="name" value="Login">
     </form>
+    </div>
+
   </body>
 </html>

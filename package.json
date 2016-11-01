@@ -36,5 +36,9 @@
     "node-fetch": "^1.6.3",
     "path": "^0.12.7",
     "watson-developer-cloud": "^2.7.1"
+  },
+  "engines": {
+    "node": "6.6.0"
   }
 }
+

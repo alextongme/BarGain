@@ -2,37 +2,74 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../../css/navbar.css">
     <link rel="stylesheet" type="text/css" href="../../css/map.css">
-    <style>
-       #map {
-        height: 700px;
-        width: 90%;
-        margin: 0 auto;
-       }
-    </style>
+
+
   </head>
   <body>
-    <h3>My Google Maps Demo</h3>
-    <div id="map"></div>
-    <script>
+
+  <div id='navContainer'>
+  <form id='searchform' action="/buy/search" method="get">
+  <input id='searchbar' type="text" name="searchTerm" placeholder="Search">
+  <input id='searchsubmit' type="submit" value="Search">
+  </form>
+  <ul>
+    <li><a id='logo' href="/decide">BarGain</a></li>
+    <li><a href="/sell">BarSell</a></li>
+    <li><a href="/buy">BarBuy</a></li>
+       <li><a href="/about">About</a></li>
+    <li><a id='account' href="/users/profile">Account</a></li>
+  </ul>
+</div>
+
+<div id='mapContainer'>
+  <div id="map"></div>
+  </div>
+
+  <div class='parallax' id='allListingsContainer'>
+  <% for (let i=0; i < mapMarkers.length; i++) { %>
+    <div id='singleListing'>
+    <h1><%= mapMarkers[i].title %></h1>
+    <p><%= mapMarkers[i].quantity %></p>
+    <p><%= mapMarkers[i].description %></p>
+    <p><%= mapMarkers[i].price %></p>
+    <p>Seller: <%= mapMarkers[i].username %></p>
+    <p>Number of BarGainers following this item: <%= mapMarkers[i].favoriteUsers.length %></p>
+    <p>For contact information,</p>
+    <a href="/buy/<%= mapMarkers[i]._id %>">click here to see detailed posting</a>
+    </div>
+    <% } %>
+  </div>
+
+
+
+<script>
       function initMap() {
         <% for (let i=0; i < mapMarkers.length; i++) { %>
         var uluru<%= i %> = {lat: <%= mapMarkers[i].latitude %> , lng: <%= mapMarkers[i].longitude %>};
         <% }; %>
 
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 12,
-          center: {lat: 40.7589, lng: -73.985130},
+          zoom: 3,
+          center: {lat: 39.833333, lng: -98.583333},
         });
 
         <% for (let i=0; i < mapMarkers.length; i++) { %>
         var contentString<%= i %> = '<div id="content">'+
             '<div id="siteNotice">'+
-            '<h1><%= mapMarkers[i].sellerId %></h1>'+
+            '<h1>Seller: <%= mapMarkers[i].username %></h1>'+
             '</div>'+
-            '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
+            '<h1><%= mapMarkers[i].title %></h1>'+
             '<div id="bodyContent">'+
-            '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is looking to sell a snowboard.</p>'+
+            '<p><%= mapMarkers[i].quantity %></p>'+
+            '<p><%= mapMarkers[i].description %></p>'+
+            '<p>$<%= mapMarkers[i].price %></p>'+
+            '<p>Number of BarGainers following this item: <%= mapMarkers[i].favoriteUsers.length %></p>'+
+            '<p>For contact information,</p>'+
+            '<a href="/buy/<%= mapMarkers[i]._id %>">click here to see detailed posting</a>'
             '</div>'+
             '</div>';
         var infowindow<%= i %> = new google.maps.InfoWindow({

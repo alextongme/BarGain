@@ -4,27 +4,50 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Welcome</title>
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="../../css/reset.css">
+  <link rel="stylesheet" type="text/css" href="../../css/navbar.css">
   <link rel="stylesheet" href="../css/currentLocation.css">
 </head>
 <body>
 
-<h1>Your current location has a</h1>
-  <h1>latitude of <%= currentLocation.location.lat %>.</h1>
-  <h1>and a longitude of <%= currentLocation.location.lng %>.</h1>
+<div id='navContainer'>
+  <form id='searchform' action="/buy/search" method="get">
+  <input id='searchbar' type="text" name="searchTerm" placeholder="Search">
+  <input id='searchsubmit' type="submit" value="Search">
+  </form>
+  <ul>
+    <li><a id='logo' href="/decide">BarGain</a></li>
+    <li><a href="/sell">BarSell</a></li>
+    <li><a href="/buy">BarBuy</a></li>
+       <li><a href="/about">About</a></li>
+    <li><a id='account' href="/users/profile">Account</a></li>
+  </ul>
+</div>
 
-    <form action="/sell/submit" method="post" accept-charset="utf-8">
-      <input type='hidden' name='user[latitude]' value='<%= currentLocation.location.lat %>'><br>
-      <input type='hidden' name='user[longitude]' value='<%= currentLocation.location.lng %>'><br>
-      <input type='hidden' name='user[accuracy]' value='<%= currentLocation.accuracy %>'><br>
-      <input type="number" name='user[quantity]' placeholder="Quantity?"><br>
-      <input type="tel" name='user[tel]' placeholder="Telephone?"><br>
-      <input type="email" name='user[email]' placeholder="Email"><br>
-      <input type='text' name='user[description]' placeholder='What are you selling today?'><br>
-      <input type='number' name='user[price]' placeholder='What price are you willing to Bar Gain from?'><br>
-      <p>Have a picture?</p>
-      <input type="file" name="user[pic]" accept="image/*">
-      <input type="submit" value="Submit!">
-    </form>
+<div id='mainContainer'>
+  <h1>You are currently located at a latitude of <%= currentLocation.location.lat %> and a longitude of <%= currentLocation.location.lng %>.</h1>
+  <form action="/sell/submit" method="post" accept-charset="utf-8">
+  <input type='hidden' name='listing[latitude]' value='<%= currentLocation.location.lat %>'><br>
+  <input type='hidden' name='listing[longitude]' value='<%= currentLocation.location.lng %>'><br>
+  <input type='hidden' name='listing[accuracy]' value='<%= currentLocation.accuracy %>'><br>
+  <input type="number" name='listing[quantity]' placeholder="Quantity?"><br>
+  <input type='text' name='listing[title]' placeholder='Title'><br>
+  <input type='text' name='listing[description]' placeholder='Description'><br>
+  <input type='number' name='listing[price]' placeholder='Price?'><br>
+  <p>Category</p>
+  <input type="radio" name="listing[category]" value="electronics" checked> Electronics<br>
+  <input type="radio" name="listing[category]" value="female"> Cars and Motors<br>
+  <input type="radio" name="listing[category]" value="sports"> Sports, Leisure and Games<br>
+  <input type="radio" name="listing[category]" value="home"> Home and Garden<br>
+  <input type="radio" name="listing[category]" value="movies"> Movies, Books and Music<br>
+  <input type="radio" name="listing[category]" value="fashion"> Fashion and Accessories<br>
+  <input type="radio" name="listing[category]" value="baby"> Baby and Child<br>
+  <input type="radio" name="listing[category]" value="other"> Other<br>
+  <input type="submit" value="Submit!">
+  </form>
+</div>
+
 
 </body>
 </html>

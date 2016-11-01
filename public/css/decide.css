@@ -1,0 +1,50 @@
+body{
+  background-image: url('../wallpapers/balloon.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+#bodycontainer {
+  display: block;
+}
+
+#title {
+  font-size: 10vw;
+  color: #e8edf3;
+  margin-top: 150px;
+  text-shadow: 0 5px 5px #222;
+}
+
+#subtitle {
+  font-size: 2vw;
+  color: #e8edf3;
+  margin-top: 50px;
+  text-shadow: 0 2px 2px #222;
+  font-weight: bold;
+}
+
+.button {
+  display: inline-block;
+  margin-top: 80px;
+  background-color: #22264b;
+  color: #e8edf3;
+  font-size: 3vw;
+  width: 30vw;
+  height: 80px;
+  padding-top: 30px;
+  text-decoration: none;
+  border-radius: 50px;
+  margin-left: 30px;
+  margin-right: 30px;
+  text-shadow: 0 2px 2px #222;
+}
+
+.button:hover {
+  background-color: #e6cf8b;
+  color: #b56969;
+}
+

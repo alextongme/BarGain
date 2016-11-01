@@ -7,12 +7,14 @@ const bodyParser      = require('body-parser');
 const session         = require('express-session');
 const cookieParser    = require('cookie-parser');
 const methodOverride  = require('method-override');
+
 const indexRouter     = require('./routes/index');
 const authRouter      = require('./routes/auth');
 const usersRouter     = require('./routes/users');
 const decideRouter    = require('./routes/decide');
 const buyRouter       = require('./routes/buy');
 const sellRouter       = require('./routes/sell');
+const favRouter       = require('./routes/favorites');
 
 const app             = express();
 const SECRET          = 'alextong';
@@ -49,10 +51,14 @@ app.use('/users', usersRouter);
 app.use('/decide', decideRouter);
 app.use('/buy', buyRouter);
 app.use('/sell', sellRouter);
+app.use('/favorites', favRouter);
 
 // Listen on port for connections
 // process.env.PORT is needed for when we deploy to Heroku
 const port = process.env.PORT || 3000;
+
 app.listen(port, () => {
   console.log(`Listening at port number ${port}`);
 });
+
+

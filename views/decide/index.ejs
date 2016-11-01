@@ -4,24 +4,34 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Welcome</title>
-  <link rel="stylesheet" href="css/currentLocation.css">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="../../css/reset.css">
+  <link rel="stylesheet" type="text/css" href="../../css/navbar.css">
+  <link rel="stylesheet" href="css/decide.css">
+
 </head>
 <body>
-  <h1>Your current location has a</h1>
-  <h1>latitude of <%= currentLocation.location.lat %>.</h1>
-  <h1>and a longitude of <%= currentLocation.location.lng %>.</h1>
-  <h1>And we are within <%= currentLocation.accuracy %> meters accurate.</h1>
-  <h1>Your user ID is <%= user._id %></h1>
 
-  <form action="/sell" method="get" accept-charset="utf-8">
-      <!-- <input type='hidden' name='user[latitude]' value='<%= currentLocation.location.lat %>'>
-      <input type='hidden' name='user[longitude]' value='<%= currentLocation.location.lng %>'>
-      <input type='hidden' name='user[accuracy]' value='<%= currentLocation.accuracy %>'> -->
-      <input type="submit" value="Would you like to sell something?">
-    </form>
+<div id='navContainer'>
+  <form id='searchform' action="/buy/search" method="get">
+  <input id='searchbar' type="text" name="searchTerm" placeholder="Search">
+  <input id='searchsubmit' type="submit" value="Search">
+  </form>
+  <ul>
+    <li><a id='logo' href="/decide">BarGain</a></li>
+    <li><a href="/sell">BarSell</a></li>
+    <li><a href="/buy">BarBuy</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a id='account' href="/users/profile">Account</a></li>
+  </ul>
+</div>
 
-    <form action="/buy" method="get" accept-charset="utf-8">
-      <input type="submit" value="I wanna buy something!">
-    </form>
+<div id='bodyContainer'>
+  <h1 id='title'>Would you like to?</h1>
+  <h2 id='subtitle'>Buy and sell thousands of items from users located around you.</h2>
+  <a class='button' href="/sell">BarSell</a>
+  <a class='button' href="/buy">BarBuy</a>
+</div>
+
 </body>
 </html>

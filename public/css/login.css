@@ -1,3 +1,53 @@
 body {
-  background-color: pink;
+  background-image: url('../wallpapers/gingerbread.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+  height: 100vh;
+  overflow: hidden;
 }
+
+#loginContainer {
+  border-radius: 50px;
+  margin: 0 auto;
+  margin-top: 16vh;
+  margin-right: 43vw;
+  width: 55vw;
+}
+
+
+h1 {
+  font-size: 7vw;
+  color: #e6cf8b;
+  text-shadow: 0 5px 5px #222;
+  text-decoration: bold;
+}
+
+h2 {
+  font-size: 2.5vw;
+  color: #e8edf3;
+  margin-top: 5vh;
+  text-shadow: 0 5px 5px #222;
+}
+
+input {
+  border: none;
+  border-radius: 10px;
+  font-size: 2vw;
+  padding: 2vw;
+  margin-top: 4vh;
+}
+
+#submit {
+  border-radius: 10px;
+  background-color: #22264b;
+  color: #e8edf3;
+  width: 15vw;
+}
+
+#submit:hover {
+  background-color: #e6cf8b;
+  color: #b56969;
+}
+

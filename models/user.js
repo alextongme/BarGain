@@ -7,10 +7,12 @@ const bcrypt       = require('bcryptjs');
 
 const SALTROUNDS = 10;
 
-function createUser(req, res, next) {
+function createUser(req, res, next) { // makes a new user upon signup page
   const userObject = {
+    name: req.body.user.fullname,
     username: req.body.user.username,
     email: req.body.user.email,
+    tel: req.body.user.tel,
 
     // Store hashed password
     password: bcrypt.hashSync(req.body.user.password, SALTROUNDS),
