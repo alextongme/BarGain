@@ -5,7 +5,7 @@ My very first full-stack application. Buy and sell items from thousands of users
 A readme.md file with explanations of the technologies used, the approach taken, installation instructions, unsolved problems, etc.
 
 ### Technologies Used
-"eslint": "^3.8.1"
+"eslint": "^3.8.1"<br>
 "bcryptjs": "^2.3.0"
 "body-parser": "^1.15.2"
 "cookie-parser": "^1.4.3"
@@ -17,12 +17,11 @@ A readme.md file with explanations of the technologies used, the approach taken,
 "method-override": "^2.3.6"
 "mongodb": "^2.2.11"
 "morgan": "^1.7.0",
-"node-fetch": "^1.6.3"
-"path": "^0.12.7"
+node-fetch: "^1.6.3"
+path: "^0.12.7"
 
 ### Installation Instructions
 ```bash
-#!/bin/bash
 npm install
 ```
 
