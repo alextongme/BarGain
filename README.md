@@ -1,6 +1,6 @@
-# Bar Gain
-My very first full-stack application.
+![alt text](wireframes/bargain.png)
 ## 'The only bar that doesn't sell alcohol.'
+My very first full-stack application. Buy and sell items from thousands of users all geolocated around you. 
 
 A readme.md file with explanations of the technologies used, the approach taken, installation instructions, unsolved problems, etc.
 
@@ -21,7 +21,10 @@ A readme.md file with explanations of the technologies used, the approach taken,
 "path": "^0.12.7"
 
 ### Installation Instructions
-
+```bash
+#!/bin/bash
+npm install
+```
 
 ### Unsolved Problems/Future Work
 
