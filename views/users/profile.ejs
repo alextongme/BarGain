@@ -21,15 +21,16 @@
   </ul>
 </div>
 
-    <h1>Hello <%= user.username %></h1>
+<div id='box'>
+    <h1 id='header'>Hello <%= user.username %></h1>
 
     <form action="/auth?_method=DELETE" method="post">
       <input type="submit" value="Logout">
     </form>
 
-    <h1> Your Profile </h1>
+    <h1 id='header'> Your Profile </h1>
 
-    <h1>Things you want to Bar Sell: </h1> <br>
+    <h2>Things you want to Bar Sell: </h2> <br>
     <% myListings.forEach((listing) => { %>
       <div class="listingContainer">
         <p><%= listing.category %></p>
@@ -47,7 +48,7 @@
       </div>
     <% }) %>
 
-    <h1>Things you want to Bar Buy: <h1>
+    <h2>Things you want to Bar Buy: </h2>
 
     <% myFavorites.forEach((listing) => { %>
       <div class="listingContainer">
@@ -61,7 +62,7 @@
       </div>
     <% }) %>
 
-    <h1>Either way, you're Bar Gain-ing every TIME!</h1>
-
+    <h1 id='header'>Either way, you're Bar Gain-ing every TIME!</h1>
+</div>
   </body>
 </html>

@@ -1,17 +1,40 @@
-body{
+body {
   background-image: url('../wallpapers/winter.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   font-family: 'Raleway', sans-serif;
   text-align: center;
-  width: 100vw;
-  height: 100vh;
+ height: 100vh;
+ overflow: hidden;
 }
 
-#account {
-  padding: 25px 30px;
-}
 
 #bodycontainer {
   display: block;
+}
+
+#box {
+  background-color: white;
+  margin: 0 auto;
+  margin-top: 10vh;
+  border-radius: 50px;
+  width: 80vw;
+  height: 60vh;
+  overflow: scroll;
+}
+
+#header {
+   font-family: 'Raleway', sans-serif;
+   font-size: 6vw;
+}
+
+h2 {
+  font-size: 3vw;
+}
+
+.listingContainer {
+  background-color: #e6cf8b;
+  margin: 0 auto;
+  margin-top: 5vh;
+  width: 30vw;
 }

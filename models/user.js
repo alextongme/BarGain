@@ -31,7 +31,8 @@ function createUser(req, res, next) { // makes a new user upon signup page
 }
 
 function getUserById(id) {
-  return getDB().then((db) => {
+  return (db) => {
+
     const promise = new Promise((resolve, reject) => {
       db.collection('users')
         .findOne({ _id: ObjectID(id) }, (findError, user) => {
@@ -41,7 +42,9 @@ function getUserById(id) {
         });
     });
     return promise;
-  });
+
+  };
+
 }
 
 function getUserByUsername(username) {

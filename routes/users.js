@@ -7,7 +7,6 @@ const { getMyListings } = require('../models/locations');
 const { getMyFavorites } = require('../models/favorites');
 
 const usersRouter  = express.Router();
-
 /**
  * Creates a new user by handling the POST request from a form with action `/users`
  * It uses the createUser middleware from the user model

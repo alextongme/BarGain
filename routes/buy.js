@@ -5,6 +5,8 @@ const { findCurrentLocation } = require('../services/google');
 const { searchListings } = require('../models/search');
 const { getListing } = require('../models/locations');
 
+// everything on this file starts with /buy
+
 router.get('/', findCurrentLocation, getLocations, (req, res) => { // ROUTE TO GRAB ALL CURRENT ACTIVE LISTINGS
   res.render('buy/index', {
     mapMarkers: res.allListings,

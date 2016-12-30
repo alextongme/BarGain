@@ -6,6 +6,8 @@ const { saveLocation,
         getListing,
         editListing } = require('../models/locations');
 
+// starts with /sell
+
 router.get('/', authenticate, findCurrentLocation, (req, res) => { // ROUTE TO FILL OUT NEW POSTING FORM
   res.render('sell/index', {
     user: res.user,
