@@ -1,5 +1,5 @@
 /* eslint no-multi-spaces: ["error", { exceptions: { "VariableDeclarator": true } }] */
-const dotEnv          = require('dotenv').config({ silent: true });
+// const dotEnv          = require('dotenv').config({ silent: true });
 const express         = require('express');
 const morgan          = require('morgan');
 const path            = require('path');
