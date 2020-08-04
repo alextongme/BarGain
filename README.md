@@ -1,6 +1,6 @@
 # BarGain
 ## Live Link
-[tongsalex.com/bargain]http://tongsalex.com/bargain
+[tongsalex.com/bargain](http://tongsalex.com/bargain)
 
 ## Introduction
 ![alt text](wireframes/bargain.png)
