@@ -1,5 +1,10 @@
+# BarGain
+## Live Link
+http://tongsalex.com/bargain
+
+## Introduction
 ![alt text](wireframes/bargain.png)
-## 'The only bar that doesn't sell alcohol.'
+### 'The only bar that doesn't sell alcohol.'
 My very first full-stack application. Buy and sell items from thousands of users all geolocated around you. Below is a readme.md file with explanations of the technologies used, the approach taken, installation instructions, unsolved problems, etc. 
 
 ## User Story
