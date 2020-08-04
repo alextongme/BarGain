@@ -1,6 +1,6 @@
 # BarGain
 ## Live Link
-http://tongsalex.com/bargain
+[tongsalex.com/bargain]http://tongsalex.com/bargain
 
 ## Introduction
 ![alt text](wireframes/bargain.png)
@@ -16,12 +16,8 @@ My very first full-stack application. Buy and sell items from thousands of users
 - You also have the option to edit or delete your listing if you should need to change it via your personal account page.
 - Buy and sell away!
 
-
 ## Approach Taken
-Started by learning and experimenting with Google Maps API manipulation. Then, I implemented the users signup/login forms courtesy of [Bobby King](https://github.com/gittheking) at General Assembly. 
-
-## Deployed Link
-[BarGain](https://www.bar-gain.herokuapp.com "BarGain")
+Started by learning and experimenting with Google Maps API manipulation. Then, I implemented the users signup/login forms courtesy of [Bobby King](https://github.com/gittheking) at General Assembly.
 
 ### Technologies Used
 "eslint": "^3.8.1"  
