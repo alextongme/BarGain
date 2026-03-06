@@ -657,7 +657,7 @@ h3 { font-size: 1.15rem; }
 }
 
 /* --- Empty State --- */
-.empty { text-align: center; padding: 4rem 2rem; color: var(--text-muted); }
+.empty { text-align: center; padding: 4rem 2rem; color: var(--text-muted); grid-column: 1 / -1; }
 .empty-icon { font-size: 2rem; margin-bottom: 1rem; opacity: 0.3; }
 
 /* --- Animations --- */
