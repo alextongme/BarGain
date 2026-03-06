@@ -8,6 +8,8 @@ const apiRouter = require('./routes/api');
 
 const app = express();
 
+app.set('trust proxy', 1);
+
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -17,6 +19,12 @@ app.use(session({
   resave: false,
   saveUninitialized: false,
   secret: process.env.SESSION_SECRET || 'bargain-dev-secret',
+  proxy: true,
+  cookie: {
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'lax',
+    maxAge: 24 * 60 * 60 * 1000,
+  },
 }));
 
 app.use(express.static(path.join(__dirname, 'public')));
