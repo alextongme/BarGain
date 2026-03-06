@@ -116,8 +116,11 @@ router.post('/auth/demo', async (req, res) => {
         favoriteListings: [],
       });
       user = await db.collection('users').findOne({ _id: result.insertedId });
+    }
 
-      // Seed demo listings
+    // Seed demo listings if none exist for this user
+    const existingCount = await db.collection('listings').countDocuments({ sellerId: String(user._id) });
+    if (existingCount === 0) {
       const demoListings = [
         {
           sellerId: String(user._id),
