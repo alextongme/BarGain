@@ -176,6 +176,7 @@ function landingPage() {
             '<a href="#/signup" class="btn btn-gold">Sign Up</a>' +
             '<a href="#/login" class="btn btn-outline">Log In</a>' +
           '</div>' +
+          '<button class="btn btn-sm demo-btn" id="heroDemo" style="margin-top:1.5rem;opacity:0.7">or try a demo account</button>' +
         '</div>' +
         '<div class="hero-scroll">' +
           '<span>Discover</span>' +
@@ -205,7 +206,17 @@ function landingPage() {
           '</div>' +
         '</div>' +
       '</section>' +
-    '</div>'
+    '</div>',
+    function() {
+      $('#heroDemo').addEventListener('click', async function() {
+        this.textContent = 'Logging in...'; this.disabled = true;
+        try {
+          state.user = await API.demo();
+          showToast('Welcome, demo user!');
+          router.navigate('/browse');
+        } catch (err) { showToast(err.message, 'error'); this.textContent = 'or try a demo account'; this.disabled = false; }
+      });
+    }
   );
 }
 
@@ -227,10 +238,19 @@ function loginPage() {
           '</div>' +
           '<button class="btn btn-gold" type="submit" style="width:100%">Log In</button>' +
         '</form>' +
+        '<button class="btn btn-outline btn-sm" id="loginDemo" style="width:100%;margin-top:0.75rem">Try Demo Account</button>' +
         '<p class="auth-footer">Don\'t have an account? <a href="#/signup">Sign up</a></p>' +
       '</div>' +
     '</div>',
     function() {
+      $('#loginDemo').addEventListener('click', async function() {
+        this.textContent = 'Logging in...'; this.disabled = true;
+        try {
+          state.user = await API.demo();
+          showToast('Welcome, demo user!');
+          router.navigate('/browse');
+        } catch (err) { showToast(err.message, 'error'); this.textContent = 'Try Demo Account'; this.disabled = false; }
+      });
       $('#loginForm').addEventListener('submit', async function(e) {
         e.preventDefault();
         var btn = this.querySelector('button');

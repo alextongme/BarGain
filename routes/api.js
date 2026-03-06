@@ -74,6 +74,30 @@ router.post('/auth/signup', async (req, res) => {
   }
 });
 
+router.post('/auth/demo', async (req, res) => {
+  try {
+    const db = await getDB();
+    const DEMO_USERNAME = 'demo';
+    let user = await db.collection('users').findOne({ username: DEMO_USERNAME });
+    if (!user) {
+      const result = await db.collection('users').insertOne({
+        name: 'Demo User',
+        username: DEMO_USERNAME,
+        email: 'demo@bargain.com',
+        tel: '555-0100',
+        password: bcrypt.hashSync('demo', SALT_ROUNDS),
+        favoriteListings: [],
+      });
+      user = await db.collection('users').findOne({ _id: result.insertedId });
+    }
+    req.session.userId = String(user._id);
+    const { password: _, ...safeUser } = user;
+    res.json(safeUser);
+  } catch (err) {
+    res.status(500).json({ error: 'Demo login failed' });
+  }
+});
+
 router.post('/auth/logout', (req, res) => {
   req.session.destroy(() => {
     res.status(204).end();

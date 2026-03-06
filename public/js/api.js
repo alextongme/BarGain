@@ -21,6 +21,7 @@ const API = {
   me()                    { return this.request('/api/me'); },
   login(username, password) { return this.request('/api/auth/login', { method: 'POST', body: JSON.stringify({ username, password }) }); },
   signup(data)            { return this.request('/api/auth/signup', { method: 'POST', body: JSON.stringify(data) }); },
+  demo()                  { return this.request('/api/auth/demo', { method: 'POST' }); },
   logout()                { return this.request('/api/auth/logout', { method: 'POST' }); },
 
   // Listings
