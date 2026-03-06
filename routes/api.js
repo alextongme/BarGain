@@ -94,7 +94,8 @@ router.post('/auth/demo', async (req, res) => {
     const { password: _, ...safeUser } = user;
     res.json(safeUser);
   } catch (err) {
-    res.status(500).json({ error: 'Demo login failed' });
+    console.error('Demo login error:', err.message);
+    res.status(500).json({ error: 'Demo login failed: ' + err.message });
   }
 });
 

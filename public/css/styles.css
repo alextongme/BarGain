@@ -348,6 +348,7 @@ h3 { font-size: 1.15rem; }
   color: var(--text-muted);
   font-size: 0.65rem;
   letter-spacing: 0.18em;
+  text-indent: 0.18em;
   text-transform: uppercase;
   animation: heroFade 0.8s ease-out 0.8s both;
 }
