@@ -116,6 +116,59 @@ router.post('/auth/demo', async (req, res) => {
         favoriteListings: [],
       });
       user = await db.collection('users').findOne({ _id: result.insertedId });
+
+      // Seed demo listings
+      const demoListings = [
+        {
+          sellerId: String(user._id),
+          username: DEMO_USERNAME,
+          title: 'Labubu Plush Collectible',
+          price: 45,
+          quantity: 1,
+          description: 'Rare Labubu plush toy in excellent condition. Perfect for collectors! Comes with original packaging and authentication card.',
+          category: 'other',
+          latitude: 40.7128,
+          longitude: -74.006,
+          email: 'demo@bargain.com',
+          tel: '555-0100',
+          images: ['/images/demo/labubu.jpg'],
+          favoriteUsers: [],
+          createdAt: new Date(),
+        },
+        {
+          sellerId: String(user._id),
+          username: DEMO_USERNAME,
+          title: 'MacBook Pro 16" — Like New',
+          price: 1899,
+          quantity: 1,
+          description: 'MacBook Pro 16-inch, M3 Pro chip, 18GB RAM, 512GB SSD. Barely used, less than 50 battery cycles. Includes original charger and box.',
+          category: 'electronics',
+          latitude: 40.7282,
+          longitude: -73.7949,
+          email: 'demo@bargain.com',
+          tel: '555-0100',
+          images: ['/images/demo/macbook.jpg'],
+          favoriteUsers: [],
+          createdAt: new Date(Date.now() - 86400000),
+        },
+        {
+          sellerId: String(user._id),
+          username: DEMO_USERNAME,
+          title: 'Mid-Century Modern Accent Chairs (Set of 2)',
+          price: 320,
+          quantity: 2,
+          description: 'Beautiful pair of mid-century modern accent chairs with vibrant upholstery and solid wood legs. Great conversation starters for any living room.',
+          category: 'home',
+          latitude: 40.7589,
+          longitude: -73.9851,
+          email: 'demo@bargain.com',
+          tel: '555-0100',
+          images: ['/images/demo/chair.jpg'],
+          favoriteUsers: [],
+          createdAt: new Date(Date.now() - 172800000),
+        },
+      ];
+      await db.collection('listings').insertMany(demoListings);
     }
     req.session.userId = String(user._id);
     const { password: _, ...safeUser } = user;
