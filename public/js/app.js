@@ -138,6 +138,7 @@ function navbar(active) {
 
 function listingCard(l) {
   return '<a href="#/listing/' + l._id + '" class="card listing-card">' +
+    (l.images && l.images.length ? '<img class="card-image" src="' + l.images[0] + '" alt="">' : '') +
     '<span class="card-category">' + escapeHtml(CATEGORIES[l.category] || l.category) + '</span>' +
     '<h3 class="card-title">' + escapeHtml(l.title) + '</h3>' +
     '<p class="card-price">$' + escapeHtml(String(l.price)) + '</p>' +
@@ -376,6 +377,7 @@ function listingDetailPage(params) {
         $('#detail').innerHTML =
           '<div class="detail-grid">' +
             '<div class="detail-main">' +
+              (l.images && l.images.length ? '<div class="detail-images">' + l.images.map(function(src) { return '<img src="' + src + '" alt="">'; }).join('') + '</div>' : '') +
               '<span class="detail-category">' + escapeHtml(CATEGORIES[l.category] || l.category) + '</span>' +
               '<h1 class="detail-title">' + escapeHtml(l.title) + '</h1>' +
               '<p class="detail-price">$' + escapeHtml(String(l.price)) + '</p>' +
@@ -447,6 +449,9 @@ var sellPage = requireAuth(function() {
             '<textarea class="form-textarea" name="description" placeholder="Describe your item..." required></textarea></div>' +
           '<div class="form-group"><label class="form-label">Category</label>' +
             '<select class="form-select" name="category" required>' + categoryOptions() + '</select></div>' +
+          '<div class="form-group"><label class="form-label">Images (up to 5)</label>' +
+            '<input class="form-input" type="file" name="images" accept="image/*" multiple style="padding:0.5rem 0;border:none">' +
+            '<div id="imagePreview" class="image-preview"></div></div>' +
           '<button class="btn btn-gold" type="submit" style="width:100%">Publish Listing</button>' +
         '</form>' +
       '</div></div></section>' +
@@ -455,16 +460,36 @@ var sellPage = requireAuth(function() {
       var loc = await getLocation();
       $('#lat').value = loc.lat; $('#lng').value = loc.lng;
       $('#locInfo').innerHTML = '<strong>Location detected:</strong> ' + loc.lat.toFixed(4) + ', ' + loc.lng.toFixed(4);
+      var fileInput = $('input[name="images"]');
+      fileInput.addEventListener('change', function() {
+        var preview = $('#imagePreview');
+        preview.innerHTML = '';
+        Array.from(this.files).slice(0, 5).forEach(function(file) {
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            var img = document.createElement('img');
+            img.src = e.target.result;
+            img.style.cssText = 'width:80px;height:80px;object-fit:cover;border:1px solid var(--gold-dim);border-radius:2px';
+            preview.appendChild(img);
+          };
+          reader.readAsDataURL(file);
+        });
+      });
       $('#sellForm').addEventListener('submit', async function(e) {
         e.preventDefault();
         var btn = this.querySelector('button');
         btn.textContent = 'Publishing...'; btn.disabled = true;
         try {
-          await API.createListing({
-            title: this.title.value, price: this.price.value, quantity: this.quantity.value,
-            description: this.description.value, category: this.category.value,
-            latitude: this.latitude.value, longitude: this.longitude.value,
-          });
+          var fd = new FormData();
+          fd.append('title', this.title.value);
+          fd.append('price', this.price.value);
+          fd.append('quantity', this.quantity.value);
+          fd.append('description', this.description.value);
+          fd.append('category', this.category.value);
+          fd.append('latitude', this.latitude.value);
+          fd.append('longitude', this.longitude.value);
+          Array.from(fileInput.files).slice(0, 5).forEach(function(f) { fd.append('images', f); });
+          await API.createListing(fd);
           showToast('Listing published!');
           router.navigate('/browse');
         } catch (err) {

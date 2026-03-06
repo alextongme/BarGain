@@ -28,7 +28,14 @@ const API = {
   getListings()           { return this.request('/api/listings'); },
   getListing(id)          { return this.request('/api/listings/' + id); },
   searchListings(q)       { return this.request('/api/listings/search?q=' + encodeURIComponent(q)); },
-  createListing(data)     { return this.request('/api/listings', { method: 'POST', body: JSON.stringify(data) }); },
+  createListing(formData) {
+    return fetch('/api/listings', { method: 'POST', body: formData })
+      .then(async res => {
+        const data = await res.json().catch(() => null);
+        if (!res.ok) throw new Error((data && data.error) || res.statusText);
+        return data;
+      });
+  },
   updateListing(id, data) { return this.request('/api/listings/' + id, { method: 'PUT', body: JSON.stringify(data) }); },
   deleteListing(id)       { return this.request('/api/listings/' + id, { method: 'DELETE' }); },
 

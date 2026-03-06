@@ -1,9 +1,36 @@
 const router = require('express').Router();
 const bcrypt = require('bcryptjs');
 const { ObjectId } = require('mongodb');
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
 const { getDB } = require('../lib/dbConnect');
 
 const SALT_ROUNDS = 10;
+
+// --- File Upload ---
+const uploadsDir = path.join(__dirname, '..', 'public', 'uploads');
+if (!fs.existsSync(uploadsDir)) fs.mkdirSync(uploadsDir, { recursive: true });
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => cb(null, uploadsDir),
+  filename: (req, file, cb) => {
+    const ext = path.extname(file.originalname);
+    cb(null, Date.now() + '-' + Math.round(Math.random() * 1e6) + ext);
+  },
+});
+const upload = multer({
+  storage,
+  limits: { fileSize: 5 * 1024 * 1024 },
+  fileFilter: (req, file, cb) => {
+    const allowed = /jpeg|jpg|png|gif|webp/;
+    if (allowed.test(path.extname(file.originalname).toLowerCase()) && allowed.test(file.mimetype)) {
+      cb(null, true);
+    } else {
+      cb(new Error('Only image files are allowed'));
+    }
+  },
+});
 
 // --- Auth Middleware ---
 async function authenticate(req, res, next) {
@@ -146,12 +173,13 @@ router.get('/listings/:id', async (req, res) => {
   }
 });
 
-router.post('/listings', authenticate, async (req, res) => {
+router.post('/listings', authenticate, upload.array('images', 5), async (req, res) => {
   try {
     const { title, price, quantity, description, category, latitude, longitude } = req.body;
     if (!title || price == null) {
       return res.status(400).json({ error: 'Title and price required' });
     }
+    const images = (req.files || []).map(f => '/uploads/' + f.filename);
     const db = await getDB();
     const result = await db.collection('listings').insertOne({
       sellerId: String(req.session.userId),
@@ -165,6 +193,7 @@ router.post('/listings', authenticate, async (req, res) => {
       longitude: longitude ? Number(longitude) : null,
       email: req.user.email,
       tel: req.user.tel,
+      images,
       favoriteUsers: [],
       createdAt: new Date(),
     });

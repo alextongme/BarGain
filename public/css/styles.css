@@ -499,6 +499,16 @@ h3 { font-size: 1.15rem; }
   border-top: 1px solid rgba(255,255,255,0.05);
 }
 
+.card-image {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-bottom: 1px solid var(--gold-dim);
+  margin: -1.75rem -1.75rem 1.25rem -1.75rem;
+  width: calc(100% + 3.5rem);
+  display: block;
+}
+
 /* --- Map --- */
 .map-container {
   height: 45vh;
@@ -538,6 +548,27 @@ h3 { font-size: 1.15rem; }
 }
 .detail-title { font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 0.5rem; }
 .detail-price { font-family: var(--font-display); font-size: 2.5rem; font-weight: 700; color: var(--gold); margin-bottom: 1.5rem; }
+.detail-images {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+.detail-images img {
+  width: 220px;
+  height: 180px;
+  object-fit: cover;
+  border: 1px solid var(--gold-dim);
+  border-radius: 2px;
+  flex-shrink: 0;
+  transition: transform 0.3s var(--ease);
+}
+.detail-images img:hover { transform: scale(1.03); }
+.detail-images::-webkit-scrollbar { height: 4px; }
+.detail-images::-webkit-scrollbar-track { background: rgba(255,255,255,0.03); }
+.detail-images::-webkit-scrollbar-thumb { background: var(--gold-dim); border-radius: 2px; }
+
 .detail-desc { color: var(--text-muted); line-height: 1.7; margin-bottom: 2rem; font-size: 1.05rem; }
 
 .detail-meta { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
@@ -556,6 +587,9 @@ h3 { font-size: 1.15rem; }
 .form-card { max-width: 600px; margin: 0 auto; padding: 2.5rem; }
 .form-card h1 { margin-bottom: 0.5rem; }
 .form-card .subtitle { color: var(--text-muted); margin-bottom: 2rem; }
+
+.image-preview { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem; }
+.image-preview img { border-radius: 2px; }
 
 /* --- Profile --- */
 .profile-header {
